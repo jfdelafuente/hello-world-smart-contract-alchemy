@@ -1,0 +1,19 @@
+{
+  "name": "hello-world-smart-contract-alchemy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jfdelafuente/hello-world-smart-contract-alchemy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jfdelafuente/hello-world-smart-contract-alchemy/issues"
+  },
+  "homepage": "https://github.com/jfdelafuente/hello-world-smart-contract-alchemy#readme"
+}
