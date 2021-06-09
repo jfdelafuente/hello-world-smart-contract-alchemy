@@ -19,10 +19,7 @@
  */
 
 const HDWalletProvider = require('@truffle/hdwallet-provider');
-// const infuraKey = "066b9bb87b584f9c9e9ca5e6bce0c283";
-
-const fs = require('fs');
-const mnemonic = fs.readFileSync(".secret").toString().trim();
+require('dotenv').config();
 
 module.exports = {
   /**
@@ -48,7 +45,8 @@ module.exports = {
      network_id: "*",       // Any network (default: none)
     },
     rinkeby: {
-      provider: () => new HDWalletProvider(mnemonic, `https://rinkeby.infura.io/v3/066b9bb87b584f9c9e9ca5e6bce0c283`),
+      provider: () => new HDWalletProvider(`${process.env.MNEMONIC}`, 
+                                           `https://rinkeby.infura.io/v3/${process.env.INFURA_ID}`),
       network_id: 4,
       gas: 4000000 //4M is the max
     }
@@ -107,5 +105,10 @@ module.exports = {
 
   db: {
     enabled: false
+  },
+
+  plugins: ['truffle-plugin-verify'],
+  api_keys: {
+    etherscan: process.env.ETHERSCAN_API_KEY
   }
 };

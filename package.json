@@ -18,6 +18,10 @@
   "homepage": "https://github.com/jfdelafuente/hello-world-smart-contract-alchemy#readme",
   "dependencies": {
     "@truffle/hdwallet-provider": "^1.4.0",
-    "dotenv": "^10.0.0"
+    "dotenv": "^10.0.0",
+    "web3": "^1.3.6"
+  },
+  "devDependencies": {
+    "truffle-plugin-verify": "^0.5.8"
   }
 }
