@@ -2,14 +2,14 @@ require('dotenv').config();
 const API_URL = process.env.API_URL;
 const PUBLIC_KEY = process.env.PUBLIC_KEY;
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
+const CONTRACT_ADD = process.env.CONTRACT_ADDRESS;
 
 const Web3 = require('web3');
 const web3 = new Web3(API_URL);
 const contract = require("../build/contracts/HelloWorld.json");
 console.log(JSON.stringify(contract.abi));
 
-const contractAddress = "0xbaF4985eDC2e5B06bd97bAe759f04B481f6F4647";
-const helloWorldContract = new web3.eth.Contract(contract.abi, contractAddress);
+const helloWorldContract = new web3.eth.Contract(contract.abi, CONTRACT_ADD);
 
 async function updateMessage(newMessage) {
     const nonce = await web3.eth.getTransactionCount(PUBLIC_KEY, 'latest'); // get latest nonce
@@ -18,7 +18,7 @@ async function updateMessage(newMessage) {
     // Create the transaction
     const tx = {
         'from': PUBLIC_KEY,
-        'to': contractAddress,
+        'to': CONTRACT_ADD,
         'nonce': nonce,
         'gas': gasEstimate,
         'data': helloWorldContract.methods.update(newMessage).encodeABI()
@@ -42,7 +42,7 @@ async function updateMessage(newMessage) {
 async function main() {
     const message = await helloWorldContract.methods.message().call();
     console.log("The message is: " + message);
-    // await updateMessage("Hello Drupe!");
+    // await updateMessage("Hello Dela !!!");
 }
 
 main();
